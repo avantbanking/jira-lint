@@ -137,7 +137,7 @@ async function run(): Promise<void> {
       const hotfixLabel: string = getHotfixLabel(baseBranch);
       const typeLabel: string = details?.type?.name || '';
       const labels: string[] = [podLabel, hotfixLabel, typeLabel].filter(isNotBlank);
-      console.log('Adding lables -> ', labels);
+      console.log('Adding labels -> ', labels);
 
       await addLabels(client, {
         ...commonPayload,
