@@ -134,12 +134,8 @@ async function run(): Promise<void> {
     const details: JIRADetails = await getTicketDetails(issueKey);
     if (details.key) {
       const podLabel = (details?.project?.name || '').trim();
-      const hotfixLabel: string = getHotfixLabel(baseBranch);
-      let typeLabel: string = details?.type?.name || '';
-      if (typeLabel === 'Sub-task') {
-        typeLabel = 'Subtask';
-      }
-
+      const hotfixLabel: string = getHotfixLabel(baseBranch).trim();
+      const typeLabel: string = (details?.type?.name || '').trim();
       const labels: string[] = [podLabel, hotfixLabel, typeLabel].filter(isNotBlank);
       console.log('Adding labels -> ', labels);
 

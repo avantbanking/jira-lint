@@ -109,10 +109,8 @@ export const getJIRAClient = (baseURL: string, token: string): JIRAClient => {
 /** Add the specified label to the PR. */
 export const addLabels = async (client: github.GitHub, labelData: IssuesAddLabelsParams): Promise<void> => {
   try {
-    console.log(labelData)
     await client.issues.addLabels(labelData);
   } catch (error) {
-    console.log(error)
     core.setFailed(error.message);
     process.exit(1);
   }
