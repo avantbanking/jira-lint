@@ -135,7 +135,11 @@ async function run(): Promise<void> {
     if (details.key) {
       const podLabel = details?.project?.name || '';
       const hotfixLabel: string = getHotfixLabel(baseBranch);
-      const typeLabel: string = details?.type?.name || '';
+      let typeLabel: string = details?.type?.name || '';
+      if (typeLabel === 'Sub-task') {
+        typeLabel = 'Subtask';
+      }
+
       const labels: string[] = [podLabel, hotfixLabel, typeLabel].filter(isNotBlank);
       console.log('Adding labels -> ', labels);
 
