@@ -133,7 +133,7 @@ async function run(): Promise<void> {
     const { getTicketDetails } = getJIRAClient(JIRA_BASE_URL, JIRA_TOKEN);
     const details: JIRADetails = await getTicketDetails(issueKey);
     if (details.key) {
-      const podLabel = details?.project?.name || '';
+      const podLabel = (details?.project?.name || '').trim();
       const hotfixLabel: string = getHotfixLabel(baseBranch);
       let typeLabel: string = details?.type?.name || '';
       if (typeLabel === 'Sub-task') {
